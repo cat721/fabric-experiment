@@ -74,4 +74,46 @@ func main(){
 
 ##2 智能合约的部署
 
-2.1 将智能合约的代码拷贝到
+1. 将智能合约的代码拷贝到`fabric/examples/e2e_cli/examples/chaincode/go/`。
+
+```bash
+mkdir ~/go/src/github.com/hyperledger/fabric/examples/e2e_cli/examples/chaincode/go/hello
+
+cp hello.go ~/go/src/github.com/hyperledger/fabric/examples/e2e_cli/examples/chaincode/go/hello
+```
+
+2. 启动fabric 网络。
+
+```bash
+cd ~/go/src/github.com/hyperledger/fabric/examples/e2e_cli/examples
+
+./network_setup.sh up
+```
+
+3. 安装chaincode
+
+```bash
+docker exec -it cli bash
+
+peer chaincode install -n mycc -v 1.0 -p github.com/hyperledger/fabric/examples/chaincode/go/hello
+```
+
+4. 实例化chaincode
+```bash
+    peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile $ORDERER_CA -n mycc -v 0 -c '{"Args":["str","HelloWorld"]}' -C mychannel
+```
+
+5.查询chaincode 
+```bash
+peer chaincode query -n mycc -c '{"Args":["get","str"]}' -C myc
+```
+
+6.发起交易
+```bash
+peer chaincode invoke -o orderer.example.com:7050  --tls true --cafile $ORDERER_CA -C mychannel -n mycc -c '{"Args":["set","str","newHelloWorld"]}'
+```
+
+7.再次查询
+```bash
+'{"Args":["set","str","newHelloWorld"]}'
+```
