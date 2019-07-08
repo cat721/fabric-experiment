@@ -52,7 +52,7 @@ sudo -u postgres psql
 
 更改密钥信息位置：
 ```bash
-sed -i "s|fabric-path/fabric-samples/first-network|~/go/src/github.com/hyperledger/fabric/examples/e2e_cli|g" config.json
+sed -i "s|fabric-path/fabric-samples/first-network|/home/ubuntu/go/src/github.com/hyperledger/fabric/examples/e2e_cli|g" config.json
 ```
 
 ##2.4 build浏览器
