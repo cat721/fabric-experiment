@@ -1,9 +1,12 @@
 
 #fabric 的搭建
+=========================
 
 ##1、环境准备
+=========================
 
 ###1.1、实验环境
+=========================
 
 - Ubuntu 16.04
 
@@ -11,6 +14,7 @@
 
 - go 1.12
 ###1.2、安装docker
+=========================
 
 ```bash
 sudo apt-get update
@@ -61,6 +65,7 @@ docker ps
  如果docker 没有成功启动，重启设备。
  
 ### 1.3、安装docker-comppose.
+==============================
  
  ```bash
  curl -L https://get.daocloud.io/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` > ./docker-compose
@@ -75,6 +80,7 @@ docker ps
  ```
  
  ###1.4、安装golang
+ ==============================
 ```bash
 wget https://storage.googleapis.com/golang/go1.12.linux-amd64.tar.gz
 
@@ -102,8 +108,10 @@ go version
 
  
  ##2、安装Fabric
+ ===============
  
  ###2.1、Fabric源码下载
+ ======================
  
  ```bash
 mkdir -p ~/go/src/github.com/hyperledger 
@@ -120,6 +128,7 @@ git checkout release-1.0
 ```
 
 ###2.2、Fabric Docker镜像的下载
+==============================
 
 通过官方提供的脚本下载docker镜像
 
@@ -156,6 +165,7 @@ hyperledger/fabric-ca          latest              a15c59ecda5b        24 months
 hyperledger/fabric-ca          x86_64-1.0.0        a15c59ecda5b        24 months ago       238MB
 ```
 ###2.3、启动Fabric网络并完成ChainCode的测试
+============================================
 
 ```bash
 ./network_setup.sh up
@@ -181,3 +191,26 @@ code = Unknown desc = Error starting container: API error (404): {"message":"net
 |_____| |_| \_| |____/          |_____| |_____| |_____|
 ```
 
+##3、fabric-sample 启动
+=========================
+1、下载fabric-sample
+```bash
+git clone https://github.com/hyperledger/fabric-samples.git
+cd fabric-samples
+git checkout release-1.0 
+```
+
+2、下载docker images
+```bash
+cd script
+./fabric-preload.sh 
+```
+
+3、启动balance-transfer测试
+```bash
+cd ../balance-transfer
+./runApp.sh &
+./testAPIs.sh
+```
+
+ps:balance-transfer 需要安装node，如何安装node请参考浏览器章节。

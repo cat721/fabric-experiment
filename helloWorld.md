@@ -73,6 +73,7 @@ func main(){
 在上述的例子中分别实现了对于链上信息的写入和读取。fabric中的chaincode是用go写成的，并且关于更多对于链的操作，点击[这里](https://github.com/hyperledger/fabric/blob/release-1.4/core/chaincode/shim/interfaces.go)。
 
 ##2 智能合约的部署
+==============================
 
 1. 将智能合约的代码拷贝到`fabric/examples/e2e_cli/examples/chaincode/go/`。
 
