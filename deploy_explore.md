@@ -81,4 +81,4 @@ npm run build
 ```bash
 node main
 ```
-=======
+ps:安装不成功，[这里](https://pan.baidu.com/s/1w5S-B3qRmrTmiO2V7EehqQ)有可用版本，调整配置文件即可。
