@@ -1,2 +1,2 @@
-# fabric-experience
-blockchain experience for Fan Lei class
+# fabric-experiment
+blockchain experiment for Fan Lei class
